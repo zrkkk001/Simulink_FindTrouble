@@ -9,6 +9,11 @@ finda1=1; %编程语言
 finda2=0;%数据类型有无写成doubel的 ，目前管得太宽了报错严重
 finda3=1; %去除 仿真时添加在chart里面的观测信号 
 finda4=0; % 在仿真时  添加在chart里面的观测信号
+%%利用正则表达式对 3 4 5 点进行逐一搜索 
+%(?<![*/])/(?!(single|\*|/|.*?\.))
+%(?<!;\s{0,9})(?![\r\n])\}
+%(max|min)\((.*,\d*[^.]|\d[^.])\)
+%%
 ch = find(sfroot,"-isa","Stateflow.Chart");
 for iii =1:length(ch)
 parent = find(ch(iii),"-isa","Stateflow.Data");
@@ -50,4 +55,3 @@ end
 
  pause('off');
  pause('on');
-
